@@ -6,12 +6,12 @@
 </template>
 
 <script>
-import OpeningList from "./components/OpeningList.vue";
-import ListSquares from "./components/ListSquares.vue";
+import OpeningList from './components/OpeningList.vue'
+import ListSquares from './components/ListSquares.vue'
 
 export default {
-  name: "App",
-  data: function() {
+  name: 'App',
+  data: function () {
     return {
       listsOfColors: this.$store.state.listsOfColors
     }
@@ -19,8 +19,8 @@ export default {
   components: {
     OpeningList,
     ListSquares
-  },
-};
+  }
+}
 </script>
 
 <style>

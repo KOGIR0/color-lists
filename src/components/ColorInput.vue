@@ -9,52 +9,52 @@
 
 <script>
 export default {
-    name: "ColorInput",
-    props: ['listId', 'color'],
-    computed: {
-        colorNum: {
-            get() {
-                return this.$props.color.ammount;
-            },
-            set(value) {
-                const listId = this.$props.listId;
-                let color = this.$props.color;
-                color.ammount = value;
-                this.$store.commit('setColor', {
-                    listId,
-                    newColor: color
-                });
-            }
-        },
-        colorValue: {
-            get() {
-                return this.$props.color.value;
-            },
-            set(value) {
-                const listId = this.$props.listId;
-                let color = this.$props.color;
-                color.value = value;
-                this.$store.commit('setColor', {
-                    listId,
-                    newColor: color
-                });
-            }
-        },
-        isChecked: {
-            get() {
-                return this.$props.color.checked;
-            },
-            set(value) {
-                const listId = this.$props.listId;
-                let color = this.$props.color;
-                color.checked = value;
-                this.$store.commit('setColor', {
-                    listId,
-                    newColor: color
-                });
-            }
-        }
+  name: 'ColorInput',
+  props: ['listId', 'color'],
+  computed: {
+    colorNum: {
+      get () {
+        return this.$props.color.ammount
+      },
+      set (value) {
+        const listId = this.$props.listId
+        const color = this.$props.color
+        color.ammount = value
+        this.$store.commit('setColor', {
+          listId,
+          newColor: color
+        })
+      }
+    },
+    colorValue: {
+      get () {
+        return this.$props.color.value
+      },
+      set (value) {
+        const listId = this.$props.listId
+        const color = this.$props.color
+        color.value = value
+        this.$store.commit('setColor', {
+          listId,
+          newColor: color
+        })
+      }
+    },
+    isChecked: {
+      get () {
+        return this.$props.color.checked
+      },
+      set (value) {
+        const listId = this.$props.listId
+        const color = this.$props.color
+        color.checked = value
+        this.$store.commit('setColor', {
+          listId,
+          newColor: color
+        })
+      }
     }
+  }
 }
 </script>
 

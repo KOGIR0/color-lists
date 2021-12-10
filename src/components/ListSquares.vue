@@ -1,16 +1,13 @@
 <template>
   <div>
-      {{this.$store.state}}
-    </div>
+    {{ this.$store.state }}
+  </div>
 </template>
 
 <script>
 export default {
-    name: "ListSquares"
-
+  name: 'ListSquares'
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

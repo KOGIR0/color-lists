@@ -22,29 +22,29 @@
 </template>
 
 <script>
-import ColorInput from "./ColorInput.vue";
+import ColorInput from './ColorInput.vue'
 
 export default {
-  name: "OpeningList",
-  props: ["colorsList", "listId"],
+  name: 'OpeningList',
+  props: ['colorsList', 'listId'],
   data: function () {
     return {
       isActive: false,
-      isChecked: false,
-    };
+      isChecked: false
+    }
   },
   components: {
-    ColorInput,
+    ColorInput
   },
   methods: {
     showList: function () {
-      this.isActive = !this.isActive;
+      this.isActive = !this.isActive
     },
     toggleCheckbox: function () {
-      this.isChecked = !this.isChecked;
-    },
-  },
-};
+      this.isChecked = !this.isChecked
+    }
+  }
+}
 </script>
 
 <style>
