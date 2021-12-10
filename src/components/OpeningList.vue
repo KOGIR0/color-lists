@@ -1,16 +1,29 @@
 <template>
-  <div>
-    <i
-      class="arrow"
-      v-on:click="showList()"
-      v-bind:class="{ right: !isActive, down: isActive }"
-    ></i>
-    <i
-      class="square-checkbox"
-      v-bind:class="{ 'checkbox-checked': isChecked }"
-      v-on:click="toggleCheckbox()"
-    ></i>
-    <label> {{ colorsList.name }} </label>
+  <div class="opening-list">
+    <div class="opening-list-top">
+      <i
+        class="arrow"
+        v-on:click="showList()"
+        v-bind:class="{ right: !isActive, down: isActive }"
+      ></i>
+      <i
+        class="square-checkbox"
+        v-bind:class="{
+          'checkbox-checked': colorsList.colors.every((color) => color.checked),
+        }"
+        v-on:click="toggleCheckbox()"
+      >
+        <div
+          class="square-checkbox-inner"
+          v-bind:class="{
+            'checkbox-checked': colorsList.colors.some(
+              (color) => color.checked
+            ),
+          }"
+        ></div>
+      </i>
+      <label> {{ colorsList.name }} </label>
+    </div>
     <ul class="dropdown-list" v-bind:class="{ active: !isActive }">
       <li v-for="color in colorsList.colors" :key="color.id">
         <ColorInput :listId="listId" :color="color" />
@@ -48,12 +61,29 @@ export default {
 </script>
 
 <style scoped>
+.opening-list {
+  margin: 5px;
+}
+
+.opening-list-top {
+  display: flex;
+  justify-content: baseline;
+}
+
 .square-checkbox {
   display: inline-block;
   border: 1px solid black;
-  width: 10px;
-  height: 10px;
-  margin: 0 5px 0 5px;
+  width: 12px;
+  height: 12px;
+  margin: 0 10px 0 10px;
+}
+
+.square-checkbox-inner {
+  width: 4px;
+  height: 4px;
+  left: 4px;
+  top: 4px;
+  position: relative;
 }
 
 .checkbox-checked {
@@ -73,7 +103,7 @@ export default {
   border-width: 0 1px 1px 0;
   display: inline-block;
   padding: 4px;
-  margin: 2px;
+  margin: 4px;
 }
 
 .right {

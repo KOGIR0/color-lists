@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="squares-list">
     {{ name }}
     <div v-for="color in colorsList" :key="color.id">
       <div v-if="color.checked" class="row">
@@ -22,6 +22,12 @@ export default {
 </script>
 
 <style scoped>
+.squares-list {
+  border: 1px solid black;
+  margin: 10px;
+  padding: 5px;
+}
+
 .square {
   width: 10px;
   height: 10px;

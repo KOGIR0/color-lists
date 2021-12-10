@@ -37,7 +37,11 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+#app {
+  font-size: 12px;
+}
+
 #app-container {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

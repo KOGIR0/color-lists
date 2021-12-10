@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="row">
     <input type="checkbox" v-model="isChecked" />
-    {{ color.name }}
+    <span class="color-name">{{ color.name }}</span>
     <input v-model="colorNum" type="number" min="0" />
     <input type="color" v-model="colorValue" />
   </div>
@@ -59,8 +59,19 @@ export default {
 </script>
 
 <style scoped>
+.color-name {
+  line-height: 20px;
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
 input[type="number"] {
-  margin: 10px;
+  margin: 0;
+  padding: 0;
   border: none;
   text-align: right;
   margin-right: 0;
@@ -81,5 +92,10 @@ input[type="color"] {
   vertical-align: middle;
   box-sizing: border-box;
   padding: 2px 4px;
+}
+
+input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
 }
 </style>
