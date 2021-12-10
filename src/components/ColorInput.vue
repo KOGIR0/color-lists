@@ -60,13 +60,14 @@ export default {
 
 <style scoped>
 .color-name {
-  line-height: 20px;
+  height: 30px;
+  line-height: 30px;
   text-align: center;
 }
 
 .row {
   display: flex;
-  justify-content: center;
+  justify-content: baseline;
 }
 
 input[type="number"] {
@@ -75,6 +76,7 @@ input[type="number"] {
   border: none;
   text-align: right;
   margin-right: 0;
+  width: 50%;
 }
 
 input[type="number"]:focus-visible {
@@ -95,6 +97,7 @@ input[type="color"] {
 }
 
 input[type="checkbox"] {
+  margin: 7px;
   width: 14px;
   height: 14px;
 }

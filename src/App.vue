@@ -60,4 +60,16 @@ export default {
   padding: 10px;
   width: 40%;
 }
+
+@media screen and (max-width: 600px) {
+  #app-container {
+    flex-direction: column;
+  }
+
+  .app-block {
+    box-sizing: border-box;
+    width: 90%;
+    align-self: center;
+  }
+}
 </style>
