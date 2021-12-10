@@ -1,13 +1,14 @@
 <template>
   <div class="squares-list">
     {{ name }}
-    <div v-for="color in colorsList" :key="color.id">
+    <div v-for="color in colorsList.colors" :key="color.id">
       <div v-if="color.checked" class="row">
         <div
           class="square"
           :style="{ backgroundColor: color.value }"
           v-for="index in color.ammount"
           :key="index"
+          v-on:click="removeElement(color)"
         ></div>
       </div>
     </div>
@@ -18,6 +19,12 @@
 export default {
   name: "ListSquares",
   props: ["name", "colorsList"],
+  methods: {
+    removeElement: function (color) {
+      color.ammount--;
+      this.$store.commit("setColor", { listId: this.colorsList.id, color });
+    },
+  },
 };
 </script>
 

@@ -13,7 +13,7 @@
         v-for="list in listsOfColors"
         :key="list.id"
         :name="list.name"
-        :colorsList="list.colors"
+        :colorsList="list"
       />
     </div>
   </div>

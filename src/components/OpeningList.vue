@@ -6,23 +6,12 @@
         v-on:click="showList()"
         v-bind:class="{ right: !isActive, down: isActive }"
       ></i>
-      <i
-        class="square-checkbox"
-        v-bind:class="{
-          'checkbox-checked': colorsList.colors.every((color) => color.checked),
-        }"
-        v-on:click="toggleCheckbox()"
-      >
-        <div
-          class="square-checkbox-inner"
-          v-bind:class="{
-            'checkbox-checked': colorsList.colors.some(
-              (color) => color.checked
-            ),
-          }"
-        ></div>
-      </i>
-      <label> {{ colorsList.name }} </label>
+      <SquareCheckbox
+        :onClick="toggleCheckbox"
+        :checked="colorsList.colors.every((color) => color.checked)"
+        :partlyChecked="colorsList.colors.some((color) => color.checked)"
+      />
+      <span> {{ colorsList.name }} </span>
     </div>
     <ul class="dropdown-list" v-bind:class="{ active: !isActive }">
       <li v-for="color in colorsList.colors" :key="color.id">
@@ -34,6 +23,7 @@
 
 <script>
 import ColorInput from "./ColorInput.vue";
+import SquareCheckbox from "./SquareCheckbox";
 
 export default {
   name: "OpeningList",
@@ -46,6 +36,7 @@ export default {
   },
   components: {
     ColorInput,
+    SquareCheckbox,
   },
   methods: {
     showList: function () {
@@ -68,26 +59,6 @@ export default {
 .opening-list-top {
   display: flex;
   justify-content: baseline;
-}
-
-.square-checkbox {
-  display: inline-block;
-  border: 1px solid black;
-  width: 12px;
-  height: 12px;
-  margin: 0 10px 0 10px;
-}
-
-.square-checkbox-inner {
-  width: 4px;
-  height: 4px;
-  left: 4px;
-  top: 4px;
-  position: relative;
-}
-
-.checkbox-checked {
-  background-color: black;
 }
 
 .active {
