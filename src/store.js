@@ -9,21 +9,21 @@ const initialState = [
                 id: "1",
                 name: "item 1",
                 ammount: 10,
-                value: "red",
+                value: "#ff0000",
                 checked: false
             },
             {
                 id: "2",
                 name: "item 2",
                 ammount: 5,
-                value: "green",
+                value: "#00ff00",
                 checked: false
             },
             {
                 id: "3",
                 name: "item 3",
                 ammount: 13,
-                value: "blue",
+                value: "#0000ff",
                 checked: false
             }
         ]
@@ -36,21 +36,21 @@ const initialState = [
                 id: "1",
                 name: "item 1",
                 ammount: 10,
-                value: "red",
+                value: "#ff0000",
                 checked: false
             },
             {
                 id: "2",
                 name: "item 2",
                 ammount: 5,
-                value: "green",
+                value: "#00ff00",
                 checked: false
             },
             {
                 id: "3",
                 name: "item 3",
                 ammount: 13,
-                value: "blue",
+                value: "#0000ff",
                 checked: false
             }
         ]
@@ -63,21 +63,21 @@ const initialState = [
                 id: "1",
                 name: "item 1",
                 ammount: 10,
-                value: "red",
+                value: "#ff0000",
                 checked: false
             },
             {
                 id: "2",
                 name: "item 2",
                 ammount: 5,
-                value: "green",
+                value: "#00ff00",
                 checked: false
             },
             {
                 id: "3",
                 name: "item 3",
                 ammount: 13,
-                value: "blue",
+                value: "#0000ff",
                 checked: false
             }
         ]
@@ -90,28 +90,28 @@ const initialState = [
                 id: "1",
                 name: "item 1",
                 ammount: 12,
-                value: "yellow",
+                value: "#00ffff",
                 checked: false
             },
             {
                 id: "2",
                 name: "item 2",
                 ammount: 3,
-                value: "green",
+                value: "#00ff00",
                 checked: false
             },
             {
                 id: "3",
                 name: "item 3",
                 ammount: 3,
-                value: "blue",
+                value: "#0000ff",
                 checked: false
             },
             {
                 id: "4",
                 name: "item 4",
                 ammount: 4,
-                value: "orange",
+                value: "#ffff00",
                 checked: false
             }
         ]
@@ -140,15 +140,10 @@ const store = createStore({
       }
     },
     mutations: {
-      setColorValue(state, {listId, colorId, value}) {
+      setColor(state, {listId, newColor}) {
         let colors = state.listsOfColors.find((list) => list.id === listId).colors;
-        let color = colors.find((color) => color.id == colorId);
-        color.ammount = value;
-      },
-      toggleColor(state, {listId, colorId}) {
-        let colors = this.state.listsOfColors.find((list) => list.id === listId).colors;
-        let color = colors.find((color) => color.id == colorId);
-        color.checked = !color.checked;
+        let color = colors.find((color) => color.id == newColor.id);
+        Object.assign(color, newColor);
       }
     }
 });

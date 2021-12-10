@@ -1,10 +1,9 @@
 <template>
     <div>
-        <input type="checkbox">
-        <span class="checkbox-square"></span>
+        <input type="checkbox" v-model="isChecked">
         {{ color.name }}
         <input v-model="colorNum" type="number">
-        <input type="color">
+        <input type="color" v-model="colorValue">
     </div>
 </template>
 
@@ -19,13 +18,40 @@ export default {
             },
             set(value) {
                 const listId = this.$props.listId;
-                const colorId = this.$props.color.id;
-                console.log(listId, colorId);
-                this.$store.commit('setColorValue', {
+                let color = this.$props.color;
+                color.ammount = value;
+                this.$store.commit('setColor', {
                     listId,
-                    colorId,
-                    value
-                })
+                    newColor: color
+                });
+            }
+        },
+        colorValue: {
+            get() {
+                return this.$props.color.value;
+            },
+            set(value) {
+                const listId = this.$props.listId;
+                let color = this.$props.color;
+                color.value = value;
+                this.$store.commit('setColor', {
+                    listId,
+                    newColor: color
+                });
+            }
+        },
+        isChecked: {
+            get() {
+                return this.$props.color.checked;
+            },
+            set(value) {
+                const listId = this.$props.listId;
+                let color = this.$props.color;
+                color.checked = value;
+                this.$store.commit('setColor', {
+                    listId,
+                    newColor: color
+                });
             }
         }
     }
@@ -33,7 +59,6 @@ export default {
 </script>
 
 <style>
-
 input[type="number"] {
     margin: 10px;
     border: none;

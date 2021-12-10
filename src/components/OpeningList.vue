@@ -4,7 +4,7 @@
       <i
         class="arrow"
         v-on:click="showList()"
-        v-bind:class="{ right: isActive, down: !isActive }"
+        v-bind:class="{ right: !isActive, down: isActive }"
       ></i>
       <i
         class="square-checkbox"
@@ -12,7 +12,7 @@
         v-on:click="toggleCheckbox()"
       ></i>
       <label> {{colorsList.name}} </label>
-      <ul class="dropdown-list" v-bind:class="{ active: isActive }">
+      <ul class="dropdown-list" v-bind:class="{ active: !isActive }">
         <li v-for="color in colorsList.colors" :key="color.id">
           <ColorInput :listId="listId" :color="color"/>
         </li>
