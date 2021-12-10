@@ -1,50 +1,48 @@
 <template>
-  <ul>
-    <div>
-      <i
-        class="arrow"
-        v-on:click="showList()"
-        v-bind:class="{ right: !isActive, down: isActive }"
-      ></i>
-      <i
-        class="square-checkbox"
-        v-bind:class="{ 'checkbox-checked': isChecked }"
-        v-on:click="toggleCheckbox()"
-      ></i>
-      <label> {{colorsList.name}} </label>
-      <ul class="dropdown-list" v-bind:class="{ active: !isActive }">
-        <li v-for="color in colorsList.colors" :key="color.id">
-          <ColorInput :listId="listId" :color="color"/>
-        </li>
-      </ul>
-    </div>
-  </ul>
+  <div>
+    <i
+      class="arrow"
+      v-on:click="showList()"
+      v-bind:class="{ right: !isActive, down: isActive }"
+    ></i>
+    <i
+      class="square-checkbox"
+      v-bind:class="{ 'checkbox-checked': isChecked }"
+      v-on:click="toggleCheckbox()"
+    ></i>
+    <label> {{ colorsList.name }} </label>
+    <ul class="dropdown-list" v-bind:class="{ active: !isActive }">
+      <li v-for="color in colorsList.colors" :key="color.id">
+        <ColorInput :listId="listId" :color="color" />
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
-import ColorInput from './ColorInput.vue'
+import ColorInput from "./ColorInput.vue";
 
 export default {
-  name: 'OpeningList',
-  props: ['colorsList', 'listId'],
+  name: "OpeningList",
+  props: ["colorsList", "listId"],
   data: function () {
     return {
       isActive: false,
-      isChecked: false
-    }
+      isChecked: false,
+    };
   },
   components: {
-    ColorInput
+    ColorInput,
   },
   methods: {
     showList: function () {
-      this.isActive = !this.isActive
+      this.isActive = !this.isActive;
     },
     toggleCheckbox: function () {
-      this.isChecked = !this.isChecked
-    }
-  }
-}
+      this.isChecked = !this.isChecked;
+    },
+  },
+};
 </script>
 
 <style>
