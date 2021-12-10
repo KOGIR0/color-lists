@@ -40,6 +40,8 @@ export default {
     },
     toggleCheckbox: function () {
       this.isChecked = !this.isChecked;
+      const listId = this.$props.listId;
+      this.$store.commit("toggleList", { listId, checkState: this.isChecked });
     },
   },
 };

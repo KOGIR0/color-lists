@@ -2,7 +2,7 @@
   <div>
     <input type="checkbox" v-model="isChecked" />
     {{ color.name }}
-    <input v-model="colorNum" type="number" />
+    <input v-model="colorNum" type="number" min="0" />
     <input type="color" v-model="colorValue" />
   </div>
 </template>
