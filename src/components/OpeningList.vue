@@ -45,7 +45,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .square-checkbox {
   display: inline-block;
   border: 1px solid black;

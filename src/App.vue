@@ -37,7 +37,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #app-container {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -47,6 +47,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  border: 1px solid black;
 }
 
 .app-block {
