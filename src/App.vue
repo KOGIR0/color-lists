@@ -1,5 +1,5 @@
 <template>
-  <OpeningList />
+  <OpeningList v-for="list in listsOfColors" :listId="list.id" :key="list.id" :colorsList="list"/>
 </template>
 
 <script>
@@ -7,6 +7,11 @@ import OpeningList from "./components/OpeningList.vue";
 
 export default {
   name: "App",
+  data: function() {
+    return {
+      listsOfColors: this.$store.state.listsOfColors
+    }
+  },
   components: {
     OpeningList,
   },

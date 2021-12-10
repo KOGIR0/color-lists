@@ -7,18 +7,21 @@ const initialState = [
         colors: [
             {
                 id: "1",
+                name: "item 1",
                 ammount: 10,
                 value: "red",
                 checked: false
             },
             {
                 id: "2",
+                name: "item 2",
                 ammount: 5,
                 value: "green",
                 checked: false
             },
             {
                 id: "3",
+                name: "item 3",
                 ammount: 13,
                 value: "blue",
                 checked: false
@@ -31,18 +34,21 @@ const initialState = [
         colors: [
             {
                 id: "1",
+                name: "item 1",
                 ammount: 10,
                 value: "red",
                 checked: false
             },
             {
                 id: "2",
+                name: "item 2",
                 ammount: 5,
                 value: "green",
                 checked: false
             },
             {
                 id: "3",
+                name: "item 3",
                 ammount: 13,
                 value: "blue",
                 checked: false
@@ -55,18 +61,21 @@ const initialState = [
         colors: [
             {
                 id: "1",
+                name: "item 1",
                 ammount: 10,
                 value: "red",
                 checked: false
             },
             {
                 id: "2",
+                name: "item 2",
                 ammount: 5,
                 value: "green",
                 checked: false
             },
             {
                 id: "3",
+                name: "item 3",
                 ammount: 13,
                 value: "blue",
                 checked: false
@@ -79,24 +88,28 @@ const initialState = [
         colors: [
             {
                 id: "1",
+                name: "item 1",
                 ammount: 12,
                 value: "yellow",
                 checked: false
             },
             {
                 id: "2",
+                name: "item 2",
                 ammount: 3,
                 value: "green",
                 checked: false
             },
             {
                 id: "3",
+                name: "item 3",
                 ammount: 3,
                 value: "blue",
                 checked: false
             },
             {
                 id: "4",
+                name: "item 4",
                 ammount: 4,
                 value: "orange",
                 checked: false
@@ -112,6 +125,7 @@ const initialState = [
         colors: [
             Color: {
                 id: String,
+                name: String,
                 ammount: number,
                 value: rgb,
                 checked: bool
@@ -122,18 +136,18 @@ const initialState = [
 const store = createStore({
     state () {
       return {
-        ColorLists: []
+        listsOfColors: initialState
       }
     },
     mutations: {
-      setColorValue(state, {ListId, ColorId, ColorValue}) {
-        let colors = ColorLists.find((list) => list.id === ListId);
-        let color = colors.find((color) => color.id == ColorId);
-        color.ammount = ColorValue;
+      setColorValue(state, {listId, colorId, value}) {
+        let colors = state.listsOfColors.find((list) => list.id === listId).colors;
+        let color = colors.find((color) => color.id == colorId);
+        color.ammount = value;
       },
-      toggleColor(state, {ListId, ColorId}) {
-        let colors = this.state.ColorLists.find((list) => list.id === ListId);
-        let color = colors.find((color) => color.id == ColorId);
+      toggleColor(state, {listId, colorId}) {
+        let colors = this.state.listsOfColors.find((list) => list.id === listId).colors;
+        let color = colors.find((color) => color.id == colorId);
         color.checked = !color.checked;
       }
     }

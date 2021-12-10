@@ -2,21 +2,33 @@
     <div>
         <input type="checkbox">
         <span class="checkbox-square"></span>
-        {{ name }}
-        <input v-model="number" type="number">
+        {{ color.name }}
+        <input v-model="colorNum" type="number">
         <input type="color">
     </div>
 </template>
 
 <script>
 export default {
-    data: function() {
-        return {
-            number: 0,
-        }
-    },
     name: "ColorInput",
-    props: ['name'],
+    props: ['listId', 'color'],
+    computed: {
+        colorNum: {
+            get() {
+                return this.$props.color.ammount;
+            },
+            set(value) {
+                const listId = this.$props.listId;
+                const colorId = this.$props.color.id;
+                console.log(listId, colorId);
+                this.$store.commit('setColorValue', {
+                    listId,
+                    colorId,
+                    value
+                })
+            }
+        }
+    }
 }
 </script>
 

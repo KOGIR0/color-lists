@@ -1,21 +1,23 @@
 <template>
   <ul>
     <div>
-        <i class="arrow"
-         v-on:click="showList()" 
-         v-bind:class="{ right: isActive, down: !isActive }"></i>
-        <i class="square-checkbox"
-         v-bind:class="{ 'checkbox-checked': isChecked }"
-         v-on:click="toggleCheckbox()"></i>
-        <label>
-            List 1
-        </label>
+      <i
+        class="arrow"
+        v-on:click="showList()"
+        v-bind:class="{ right: isActive, down: !isActive }"
+      ></i>
+      <i
+        class="square-checkbox"
+        v-bind:class="{ 'checkbox-checked': isChecked }"
+        v-on:click="toggleCheckbox()"
+      ></i>
+      <label> {{colorsList.name}} </label>
+      <ul class="dropdown-list" v-bind:class="{ active: isActive }">
+        <li v-for="color in colorsList.colors" :key="color.id">
+          <ColorInput :listId="listId" :color="color"/>
+        </li>
+      </ul>
     </div>
-    <ul class="dropdown-list" v-bind:class="{ active: isActive }">
-        <li><ColorInput name="Color 1"/></li>
-        <li><ColorInput name="Color 2"/></li>
-        <li><ColorInput name="Color 3"/></li>
-    </ul>
   </ul>
 </template>
 
@@ -23,46 +25,47 @@
 import ColorInput from "./ColorInput.vue";
 
 export default {
-    name: "OpeningList",
-    data: function() {
-      return {
-        isActive: false,
-        isChecked: false
-        };
+  name: "OpeningList",
+  props: ["colorsList", "listId"],
+  data: function () {
+    return {
+      isActive: false,
+      isChecked: false,
+    };
+  },
+  components: {
+    ColorInput,
+  },
+  methods: {
+    showList: function () {
+      this.isActive = !this.isActive;
     },
-    components: {
-        ColorInput,
+    toggleCheckbox: function () {
+      this.isChecked = !this.isChecked;
     },
-    methods: {
-        showList: function() {
-          this.isActive = !this.isActive;
-        },
-        toggleCheckbox: function() {
-            this.isChecked = !this.isChecked;
-        }
-    }
+  },
 };
 </script>
 
 <style>
 .square-checkbox {
-    display: inline-block;
-    border: 1px solid black;
-    width: 10px;
-    height: 10px;
-    margin: 0 5px 0 5px;
+  display: inline-block;
+  border: 1px solid black;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px 0 5px;
 }
 
 .checkbox-checked {
-    background-color: black;
+  background-color: black;
 }
 
 .active {
-    display: none;
+  display: none;
 }
 
 .dropdown-list {
-    list-style: none;
+  list-style: none;
 }
 
 .arrow {
