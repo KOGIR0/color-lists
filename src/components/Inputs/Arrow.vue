@@ -16,15 +16,16 @@ export default {
   display: inline-block;
   padding: 4px;
   margin: 4px;
+  transition: transform 0.3s ease-in-out;
 }
 
 .right {
-  transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 .down {
-  transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 </style>
