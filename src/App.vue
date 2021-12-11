@@ -1,7 +1,7 @@
 <template>
   <div id="app-container">
     <div class="app-block">
-      <OpeningList
+      <DropDownList
         v-for="list in listsOfColors"
         :listId="list.id"
         :key="list.id"
@@ -9,7 +9,7 @@
       />
     </div>
     <div class="app-block">
-      <ListSquares
+      <ColorSquaresList
         v-for="list in listsOfColors"
         :key="list.id"
         :name="list.name"
@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import OpeningList from "./components/OpeningList.vue";
-import ListSquares from "./components/ListSquares.vue";
+import DropDownList from "./components/DropDownList";
+import ColorSquaresList from "./components/ColorSquaresList.vue";
 
 export default {
   name: "App",
@@ -31,8 +31,8 @@ export default {
     };
   },
   components: {
-    OpeningList,
-    ListSquares,
+    DropDownList,
+    ColorSquaresList,
   },
 };
 </script>

@@ -1,15 +1,14 @@
 <template>
   <i
-    class="square-checkbox"
+    class="checkbox"
     v-bind:class="{
-      'checkbox-checked': checked,
+      checked: checked,
     }"
-    v-on:click="onClick"
   >
     <div
-      class="square-checkbox-inner"
+      class="checkbox-inner"
       v-bind:class="{
-        'checkbox-checked': partlyChecked,
+        checked: partlyChecked,
       }"
     ></div>
   </i>
@@ -18,12 +17,12 @@
 <script>
 export default {
   name: "SquareCheckbox",
-  props: ["checked", "partlyChecked", "onClick"],
+  props: ["checked", "partlyChecked"],
 };
 </script>
 
 <style scoped>
-.square-checkbox {
+.checkbox {
   display: inline-block;
   border: 1px solid black;
   width: 12px;
@@ -31,15 +30,15 @@ export default {
   margin: 0 10px 0 10px;
 }
 
-.square-checkbox-inner {
+.checkbox-inner {
   width: 4px;
   height: 4px;
-  left: 4px;
+  margin: auto;
   top: 4px;
   position: relative;
 }
 
-.checkbox-checked {
+.checked {
   background-color: black;
 }
 </style>

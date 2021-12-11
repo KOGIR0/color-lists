@@ -1,19 +1,15 @@
 <template>
-  <div class="opening-list">
-    <div class="opening-list-top">
-      <i
-        class="arrow"
-        v-on:click="showList()"
-        v-bind:class="{ right: !isActive, down: isActive }"
-      ></i>
+  <div class="container">
+    <div class="top">
+      <Arrow v-on:click="showList" :isActive="isActive" />
       <SquareCheckbox
-        :onClick="toggleCheckbox"
         :checked="colorsList.colors.every((color) => color.checked)"
         :partlyChecked="colorsList.colors.some((color) => color.checked)"
+        v-on:click="toggleCheckbox"
       />
-      <span> {{ colorsList.name }} </span>
+      <span v-on:click="showList"> {{ colorsList.name }} </span>
     </div>
-    <ul class="dropdown-list" v-bind:class="{ active: !isActive }">
+    <ul class="drop-down-list" v-bind:class="{ active: !isActive }">
       <li v-for="color in colorsList.colors" :key="color.id">
         <ColorInput :listId="listId" :color="color" />
       </li>
@@ -22,11 +18,12 @@
 </template>
 
 <script>
-import ColorInput from "./ColorInput.vue";
-import SquareCheckbox from "./SquareCheckbox";
+import ColorInput from "./Inputs/ColorInput.vue";
+import SquareCheckbox from "./Inputs/SquareCheckbox.vue";
+import Arrow from "./Inputs/Arrow.vue";
 
 export default {
-  name: "OpeningList",
+  name: "DropDownList",
   props: ["colorsList", "listId"],
   data: function () {
     return {
@@ -37,6 +34,7 @@ export default {
   components: {
     ColorInput,
     SquareCheckbox,
+    Arrow,
   },
   methods: {
     showList: function () {
@@ -52,11 +50,11 @@ export default {
 </script>
 
 <style scoped>
-.opening-list {
+.container {
   margin: 5px;
 }
 
-.opening-list-top {
+.top {
   display: flex;
   justify-content: baseline;
 }
@@ -65,25 +63,7 @@ export default {
   display: none;
 }
 
-.dropdown-list {
+.drop-down-list {
   list-style: none;
-}
-
-.arrow {
-  border: solid black;
-  border-width: 0 1px 1px 0;
-  display: inline-block;
-  padding: 4px;
-  margin: 4px;
-}
-
-.right {
-  transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-}
-
-.down {
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
 }
 </style>

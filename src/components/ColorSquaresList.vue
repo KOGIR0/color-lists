@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: "ListSquares",
+  name: "ColorSquaresList",
   data: function () {
     return {
       shuffled: false,
