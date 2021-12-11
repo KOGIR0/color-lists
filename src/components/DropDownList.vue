@@ -9,11 +9,13 @@
       />
       <span v-on:click="showList"> {{ colorsList.name }} </span>
     </div>
-    <ul class="drop-down-list" v-bind:class="{ active: !isActive }">
-      <li v-for="color in colorsList.colors" :key="color.id">
-        <ColorInput :listId="listId" :color="color" />
-      </li>
-    </ul>
+    <transition name="unfold">
+      <ul class="drop-down-list" v-if="isActive">
+        <li v-for="color in colorsList.colors" :key="color.id">
+          <ColorInput :listId="listId" :color="color" />
+        </li>
+      </ul>
+    </transition>
   </div>
 </template>
 
@@ -60,10 +62,35 @@ export default {
 }
 
 .active {
+  display: block;
+}
+
+.notActive {
   display: none;
 }
 
 .drop-down-list {
   list-style: none;
+}
+
+.unfold-enter-active {
+  animation: bounce-in 0.5s;
+}
+
+.unfold-leave-active {
+  animation: bounce-in 0.5s reverse;
+}
+
+@keyframes bounce-in {
+  0% {
+    transform-origin: top center;
+    transform: scaleY(0);
+    max-height: 0;
+  }
+  100% {
+    transform-origin: top center;
+    transform: scaleY(1);
+    max-height: 100px;
+  }
 }
 </style>
