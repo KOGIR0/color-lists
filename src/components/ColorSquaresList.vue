@@ -1,6 +1,6 @@
 <template>
   <div class="squares-list">
-    <div v-on:click="toggleShuffle">
+    <div class="list-name" v-on:click="toggleShuffle">
       {{ name }}
     </div>
     <div :class="{ row: shuffled }">
@@ -87,6 +87,10 @@ export default {
 </script>
 
 <style scoped>
+.list-name:hover {
+  cursor: pointer;
+}
+
 .squares-list {
   border: 1px solid black;
   margin: 10px;
