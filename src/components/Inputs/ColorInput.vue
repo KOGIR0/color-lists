@@ -2,7 +2,7 @@
   <div class="row">
     <input type="checkbox" v-model="isChecked" />
     <span class="color-name">{{ color.name }}</span>
-    <input v-model="colorNum" type="number" min="0" />
+    <input v-model="colorAmmount" type="number" min="0" />
     <input type="color" v-model="colorValue" />
   </div>
 </template>
@@ -12,18 +12,17 @@ export default {
   name: "ColorInput",
   props: ["listId", "color"],
   computed: {
-    colorNum: {
+    colorAmmount: {
       get() {
         return this.$props.color.ammount;
       },
       set(value) {
         const listId = this.$props.listId;
-        const color = this.$props.color;
-        color.ammount = value;
-        this.$store.commit("setColor", {
-          listId,
-          newColor: color,
-        });
+        const newColor = Object.assign({}, this.$props.color);
+
+        newColor.ammount = value;
+
+        this.setColor({ listId, color: newColor });
       },
     },
     colorValue: {
@@ -32,12 +31,11 @@ export default {
       },
       set(value) {
         const listId = this.$props.listId;
-        const color = this.$props.color;
-        color.value = value;
-        this.$store.commit("setColor", {
-          listId,
-          newColor: color,
-        });
+        const newColor = Object.assign({}, this.$props.color);
+
+        newColor.value = value;
+
+        this.setColor({ listId, color: newColor });
       },
     },
     isChecked: {
@@ -46,13 +44,20 @@ export default {
       },
       set(value) {
         const listId = this.$props.listId;
-        const color = this.$props.color;
-        color.checked = value;
-        this.$store.commit("setColor", {
-          listId,
-          newColor: color,
-        });
+        const newColor = Object.assign({}, this.$props.color);
+
+        newColor.checked = value;
+
+        this.setColor({ listId, color: newColor });
       },
+    },
+  },
+  methods: {
+    setColor({ listId, color }) {
+      this.$store.commit("setColor", {
+        listId,
+        newColor: color,
+      });
     },
   },
 };

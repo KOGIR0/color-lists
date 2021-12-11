@@ -56,33 +56,6 @@ const initialState = [
     ],
   },
   {
-    id: "3",
-    name: "List 3",
-    colors: [
-      {
-        id: "1",
-        name: "item 1",
-        ammount: 10,
-        value: "#ff0000",
-        checked: false,
-      },
-      {
-        id: "2",
-        name: "item 2",
-        ammount: 5,
-        value: "#00ff00",
-        checked: false,
-      },
-      {
-        id: "3",
-        name: "item 3",
-        ammount: 13,
-        value: "#0000ff",
-        checked: false,
-      },
-    ],
-  },
-  {
     id: "4",
     name: "List 4",
     colors: [
@@ -134,6 +107,7 @@ const initialState = [
     }
 ] */
 const store = createStore({
+  strict: true,
   state() {
     return {
       listsOfColors: initialState,

@@ -33,10 +33,11 @@ export default {
       const color = this.$props.colorsList.colors.find(
         (color) => color.id === id
       );
-      color.ammount--;
+      const newColor = Object.assign({}, color);
+      newColor.ammount--;
       this.$store.commit("setColor", {
         listId: this.colorsList.id,
-        newColor: color,
+        newColor,
       });
     },
     toggleShuffle: function () {
@@ -65,6 +66,7 @@ export default {
         if (this.shuffled) {
           let array = [];
           const colors = this.$props.colorsList.colors;
+
           colors.forEach((color) => {
             const n = color.ammount;
             const newColor = Object.assign({}, color);
